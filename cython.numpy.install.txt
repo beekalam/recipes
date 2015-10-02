@@ -1,0 +1,73 @@
+
+-------------------------------------------------------------------------------
+compiling cython from source in windows
+1.install MinGW compiler
+2.create distutils.cfg in your PYthonXYLibdistutils and or
+python34/lib/distutils
+
+add the following lines.
+[build]
+compiler = mingw32
+
+3. python setup.py install
+4. To test with demos
+  a. python setup.py  build_ext --inplace
+
+--------------------------------------------------------------------------------
+compiling cython from source in linux
+$curl -o http://www.cython.org/release/cython.0.18.tar.gz
+$tar zxvf cython.0.18.tar.gz
+$sudo python setup install
+--------------------------------------------------------------------------------
+Test cython installation
+$cython --version
+--------------------------------------------------------------------------------
+compiling numpy on linux
+
+$ python setup.py -j 4 install --prefix $HOME/.local
+
+This will compile numpy on 4 CPUs and install it into the specified prefix.
+
+To perform an inplace build that can be run from the source folder run:
+
+   python setup.py build_ext --inplace -j 4
+
+The number of build jobs can also be specified via the environment variable
+NPY_NUM_BUILD_JOBS.
+
+##
+  $ python setup.py build install
+--------------------------------------------------------------------------------
+compiling and installing on windows
+checks:
+  1. python distutils
+  2. zlib module
+  
+ $ python setup.py config --compiler=mingw32 build   #builds in /build 
+  
+  to build and install:
+ $ python setup.py config --compiler=mingw32 build --compiler=mingw32 install
+--------------------------------------------------------------------------------
+svn https://github.com/numpy/numpy-vendor/trunk/msvcr90.dll
+svn https://github.com/numpy/numpy-vendor/trunk/msvcr100.dll
+svn export  https://github.com/numpy/numpy-vendor/trunk/w32api-3.7.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/scons-2.3.0.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/nsis-2.46-setup.exe
+svn export  https://github.com/numpy/numpy-vendor/trunk/nsis-2.46-setup.exe
+svn export  https://github.com/numpy/numpy-vendor/trunk/NSIS.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/binutils-2.20-1-mingw32-bin.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/binutils-2.17.50-20070129-1.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/gcc-core-3.4.5-20051220-1.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/gcc-g++-3.4.5-20051220-1.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/mingw-runtime-3.10.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk//mingw-runtime-3.10.tar.gz
+svn export  https://github.com/numpy/numpy-vendor/trunk/gcc-g77-3.4.5-20051220-1.tar.gz
+svn checkout  https://github.com/numpy/numpy-vendor/trunk/gcc-g77-3.4.5-20051220-1.tar.gz
+svn checkout  https://github.com/numpy/numpy-vendor/trunk/atlas
+
+--------------------------------------------------------------------------------
+
+https://github.com/cython/cython/wiki/InstallingOnWindows
+http://docs.cython.org/src/quickstart/install.html
+http://www.mingw.org/wiki/FAQ#faq-what
+http://sebsauvage.net/python/mingw.html
